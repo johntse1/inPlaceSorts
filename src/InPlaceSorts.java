@@ -1,10 +1,23 @@
 public class InPlaceSorts
 {
-    public static void insertionSort(int[] list1)
+    public void insertionSort(int[] list1)
     {
-
+        for(int i=0;i<list1.length-1;i++)
+        {
+            if(list1[i]>list1[i+1])
+            {
+                for(int j=i ; j>0 ; j--)
+                {
+                    if(list1[i]<list1[j])
+                    {
+                        intSwap(list1,j,i);
+                    }
+                    else { break; }
+                }
+            }
+        }
     }
-    public static void selectionSort(double[] list1)
+    public void selectionSort(double[] list1)
     {
         double swap = 0;
         double minimum = 0;
@@ -25,7 +38,7 @@ public class InPlaceSorts
             }
         }
     }
-    public static void bubbleSort(String[] list1)
+    public void bubbleSort(String[] list1)
     {
         int swaps = 1;
         while (swaps != 0)
@@ -42,5 +55,11 @@ public class InPlaceSorts
                 }
             }
         }
+    }
+    public void intSwap(int[] arr, int i, int j)
+    {
+        j = arr[i];
+        arr[i] = arr[i+1];
+        arr[i+1] = j;
     }
 }
