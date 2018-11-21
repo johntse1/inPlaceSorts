@@ -10,7 +10,7 @@ public class InPlaceSorts
                 {
                     if(list1[i]<list1[j])
                     {
-                        intSwap(list1,j,i);
+                        intSwap(list1,j);
                     }
                     else { break; }
                 }
@@ -56,9 +56,9 @@ public class InPlaceSorts
             }
         }
     }
-    public void intSwap(int[] arr, int i, int j)
+    public void intSwap(int[] arr, int i)
     {
-        j = arr[i];
+        int j = arr[i];
         arr[i] = arr[i+1];
         arr[i+1] = j;
     }
