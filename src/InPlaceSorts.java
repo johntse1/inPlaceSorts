@@ -1,65 +1,76 @@
 public class InPlaceSorts
 {
-    public void insertionSort(int[] list1)
+    public static void insertionSort(int[] list1)
     {
-        for(int i=0;i<list1.length-1;i++)
+        int swapPos;
+        int min;
+
+        for(int i = 1;i<list1.length;i++)
         {
-            if(list1[i]>list1[i+1])
+            swapPos = i;
+            min = list1[swapPos];
+
+            for(int a = i-1;a>=0;a--)
             {
-                for(int j=i ; j>0 ; j--)
+                if(list1[a]>min)
                 {
-                    if(list1[i]<list1[j])
-                    {
-                        intSwap(list1,j);
-                    }
-                    else { break; }
+                    swap(list1,swapPos,a);
+                    swapPos = a;
+                    min = list1[swapPos];
+                }
+                else
+                {
+                    a=-1;
                 }
             }
         }
     }
-    public void selectionSort(double[] list1)
+    public static void selectionSort(double[] arr)
     {
-        double swap = 0;
-        double minimum = 0;
-        for(int i = 0; i < list1.length; i++ )
-        {
-            swap = 1;
-            minimum = list1[i];
-            for(int j = i; j < list1.length; j++)
-            {
-                if(list1[j] < list1[(int) minimum])
-                {
-                    swap = j;
-                    minimum = list1[j];
+        int temp;
+        for(int i=0;i<arr.length;i++){
+            temp = i;
+            for(int j=i+1;j<arr.length;j++) {
+                if (arr[temp] > arr[j]) {
+                    temp = j;
                 }
-                double swapper = list1[j];
-                list1[(int) minimum] = list1[(int) swap];
-                list1[(int) swap] = swapper;
             }
+            doubleSwap(arr, temp, i);
         }
     }
-    public void bubbleSort(String[] list1)
+    public static void bubbleSort(String[] list1)
     {
         int swaps = 1;
         while (swaps != 0)
         {
             swaps = 0;
-            for(int j = 0; j < list1.length; j++)
+            for(int j = 0; j < list1.length-1; j++)
             {
                 if(list1[j].compareTo(list1[j+1]) > 0)
                 {
                     swaps +=1;
-                    String swapper = list1[j];
-                    list1[j] = list1[j+1];
-                    list1[j+1] = swapper;
+                    stringSwap(list1,j,j+1);
                 }
             }
         }
     }
-    public void intSwap(int[] arr, int i)
+    public static void swap(int[] arr, int i,int j)
     {
-        int j = arr[i];
-        arr[i] = arr[i+1];
-        arr[i+1] = j;
+        int k = arr[i];
+        arr[i] = arr[j];
+        arr[j] = k;
     }
+    public static void doubleSwap(double[] arr, int i, int j)
+    {
+        double k = arr[i];
+        arr[i] = arr[j];
+        arr[j] = k;
+    }
+    public static void stringSwap(String[] arr, int i, int j)
+    {
+        String k = arr[i];
+        arr[i] = arr[j];
+        arr[j] = k;
+    }
+
 }
